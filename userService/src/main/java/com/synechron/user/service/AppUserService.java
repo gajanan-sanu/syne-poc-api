@@ -1,6 +1,7 @@
 package com.synechron.user.service;
 
 
+import com.synechron.user.exception.AppUserNotFoundException;
 import com.synechron.user.model.AppUserResponse;
 import com.synechron.user.model.AppUser;
 import com.synechron.user.repository.AppUserRepository;
@@ -38,9 +39,13 @@ public class AppUserService {
       return  new AppUserResponse("success",AppUser.getUserName() + " added into the DB system");
     }
 
-    public AppUser getUseDetails(String emailId) {
+    public AppUser getUseDetails(String emailId) throws AppUserNotFoundException {
 
         AppUser appUser=   appUserRepository.findByEmailId(emailId);
+        if(appUser == null){
+            throw  new AppUserNotFoundException(emailId + " is not found in system, please singUp");
+        }
+
         return  appUser;
     }
 
