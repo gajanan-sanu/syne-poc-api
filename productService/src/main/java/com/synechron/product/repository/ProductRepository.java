@@ -12,7 +12,17 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
+    Product findBySkuCode(String skuCode);
+
     List<Product> findByCategory(String category);
 
-    Product findByName(String name);
+    List<Product> findAllByName(String name);
+
+    List<Product> findAllByPriceLessThanEqual(double price);
+
+    List<Product> findAllByPriceGreaterThanEqual(double price);
+
+    List<Product> findAllByPriceBetween(double min, double max);
+
+
 }

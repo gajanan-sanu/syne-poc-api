@@ -1,10 +1,10 @@
-package com.synechron.user;
+package com.synechron.discoveryservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserServiceApplicationTests {
+class EurekaDiscoveryServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

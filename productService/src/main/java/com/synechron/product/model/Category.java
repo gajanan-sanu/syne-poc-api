@@ -1,8 +1,13 @@
 package com.synechron.product.model;
 
-public class Category {
-
-    private Integer id;
-    private String name;
-    private String brand;
+public enum Category {
+    GENERAL,
+    FASHION,
+    ELECTRONICS,
+    SPORT,
+    MUSIC,
+    TECHNOLOGY,
+    FRUITS,
+    NUTS,
+    VEGETABLES;
 }
