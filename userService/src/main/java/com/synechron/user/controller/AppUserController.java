@@ -37,9 +37,22 @@ public class AppUserController {
 
 
     @Operation(description = "get user details for sign in")
-    @PostMapping("/login/{emailId}")
-    AppUser getUseDetails(@PathVariable AppUser appUser) {
-        return appuserServie.getUseDetails(appUser.getEmailId());
+    @PostMapping("/login")
+    AppUserResponse userLogIn(@PathVariable AppUser appUser) {
+
+        if(appUser != null & appUser.getEmailId() != null & appUser.getPassword() != null) {
+            logger.info("userLogIn" +appUser.getEmailId() );
+            logger.info("userLogIn getPassword :" +appUser.getPassword() );
+            return appuserServie.userLogIn(appUser.getEmailId(), appUser.getPassword());
+        }
+        return new AppUserResponse("failed", " empty user object");
+    }
+
+
+    @Operation(description = "get user details for sign in")
+    @GetMapping("/user/details/{emailId}")
+    AppUser getUseDetails(@PathVariable String emailId) {
+        return appuserServie.getUseDetails(emailId);
     }
 
     @Operation(description = "get user details for sign in")
